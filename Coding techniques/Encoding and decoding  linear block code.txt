@@ -1,0 +1,14 @@
+Encoding and decoding on the data sample by linear 
+block code using MATLAB 
+
+clc;
+clear all;
+close all;
+g = [1 0 0 0 1 1 1; 0 1 0 0 1 1 0; 0 0 1 0 1 0 1; 0 0 0 1 0 1 
+1];
+m = [0 1 1 0; 0 1 0 1; 1 0 0 1];
+C=mod(m*g,2)
+code = encode(m,7,4,'linear/binary',g)
+H = hammgen(3)
+S = syndtable(H)
+msg = decode(code,7,4,'linear/binary',g,S)
